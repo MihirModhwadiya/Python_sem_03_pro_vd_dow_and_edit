@@ -5,7 +5,10 @@ from multiprocessing import Pool
 def download_video(video_url, download_path):
     yt = YouTube(video_url)
     yt.streams.filter(progressive=True, file_extension="mp4").order_by("resolution")[
-        -1
+        # 0 # highest resolution
+        -1 # second highest 
+        # -2 # thired highest
+
     ].download(download_path)
     print("Video Downloaded:", yt.title)
 
@@ -26,7 +29,7 @@ if __name__ == "__main__":
         if choice == "1":
             video_url = input("Enter video link: ")
             download_path = (
-                "/yt_v/_lofi/"  # path of folder where you want to download your video
+                "/yt_v/_soft_skills/"  # path of folder where you want to download your video
             )
             download_video(video_url, download_path)
         elif choice == "2":
